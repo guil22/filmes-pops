@@ -13,7 +13,6 @@ import Detalhes from './Detalhes';
 
 function Home() {
     const [lista, setLista] = useState([]);
-    const [filmeEsc, setFilmeEsc] = useState('');
     const {REACT_APP_API_KEY} = process.env;
 
   useEffect(() => {
