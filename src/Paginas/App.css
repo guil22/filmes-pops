@@ -1,0 +1,59 @@
+body{
+  background-color: #fbeff1;
+}
+
+.jumbotron{
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color:#5c1520 ;
+  justify-content: center;
+  height: 15vh;
+  margin-bottom: 5vh;
+  
+}
+.container{
+  margin-bottom: 5vh;
+}
+
+.card-title{
+  color: #7b1c2a;
+}
+
+.btn{
+  background-color: #ce2f47;
+  color: white;
+}
+.btn:hover{
+  background-color: #8a1f2f ;
+  color: white;
+}
+.btn:focus {     
+  background-color:#8a1f2f;   
+  color: white; 
+}
+
+.card{
+  width: 15em;
+  margin: 10px;
+  background-color: #fbeff1;
+  border: 1px solid #f3cbd1;
+  
+}
+
+.filmes{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+
+}
+
+
+footer{
+  background-color: #5c1520;
+  min-height: 5em;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
