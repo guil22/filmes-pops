@@ -3,17 +3,19 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
-  Routes,
-  Route,
   Link,
-  useParams
+  useNavigate
 } from "react-router-dom";
-import Detalhes from './Detalhes';
+import { AuthContext } from '../Providers/Context';
 
+
+const {REACT_APP_API_KEY} = process.env;
 
 function Home() {
     const [lista, setLista] = useState([]);
-    const {REACT_APP_API_KEY} = process.env;
+    const { pesquisa, setPesquisa } = React.useContext(AuthContext)
+    
+    const navigation = useNavigate();
 
   useEffect(() => {
     const url = `https://api.themoviedb.org/3/movie/popular?api_key=${REACT_APP_API_KEY}&language=pt-BR&page=1`
@@ -23,16 +25,47 @@ function Home() {
     .then(data => setLista(data.results)) 
   }, [])
   //console.log(lista)
+
+  const handleEnter = (e) => {
+    if(e.key === 'Enter'){
+      e.preventDefault();
+    }
+    
+  }
+
+  const handleSearch = (e) => {
+    
+    if(pesquisa === ''){
+      e.preventDefault()
+      alert("Campo vazio");
+    } 
+    /* else{
+      navigation(`/search/${pesquisa}`)
+    }   */   
+  }
   
   return (
     
     <div className='App'>
-      <div class="jumbotron jumbotron-fluid">
+      <div className="jumbotron jumbotron-fluid">
       <h1 className="display-4">Filmes Populares</h1>
       </div>
       <div className='container'>
       
-         
+        <form className="barra">
+          <input className="former" 
+          type="search" minLength={2}
+          onKeyPress={handleEnter} 
+          placeholder="Pesquise outros filmes ..."
+          value={pesquisa}
+          onChange={(e) => setPesquisa(e.target.value)}
+          aria-label="Search"/>
+          <Link to={`/search/${pesquisa}`} className="btn" onClick={handleSearch}
+           type="submit">Pesquisar</Link>
+          
+        </form>
+      
+               
       <div className='filmes'>
       {lista.map(filme => {
           return(

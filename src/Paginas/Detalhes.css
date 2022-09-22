@@ -16,6 +16,7 @@ h2{
 
 .filme{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     
