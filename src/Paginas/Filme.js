@@ -35,13 +35,11 @@ useEffect(() => {
                 {resultado.length
                 ?<div className='filmes'>
                     {resultado.map(filme => {
-                        let foto = `https://image.tmdb.org/t/p/w500${filme.poster_path}`;  
-                        console.log(foto);
                         return(
                         filme.poster_path != null &&
                         <div className="card" key={filme.id} >
                                                     
-                            <img className="card-img-top" src={foto} alt="..."></img>
+                            <img className="card-img-top" src={`https://image.tmdb.org/t/p/w500${filme.poster_path}`} alt="..."></img>
                             <div className="card-body">
                             <h5 className="card-title">{filme.title} </h5>
                                 <Link to= {`/${filme.id}`} className="btn ">Detalhes</Link>                           
